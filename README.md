@@ -7,7 +7,7 @@ API test automation for the public [restful-booker](https://restful-booker.herok
 
 Both cover **token authentication** and the **full CRUD lifecycle** of a booking.
 
-![API Tests](https://github.com/YOUR_USERNAME/api-testing-framework/actions/workflows/api-tests.yml/badge.svg)
+![API Tests](https://github.com/ravirajnandagopal/api-testing-framework/actions/workflows/api-tests.yml/badge.svg)
 
 ## What's covered
 
