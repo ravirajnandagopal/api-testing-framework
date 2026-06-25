@@ -1,6 +1,6 @@
 # API Testing Framework
 
-This project automates testing of a booking API (the public restful-booker service), covering authentication and the full create-read-update-delete lifecycle of a booking. It's built two ways:
+This project automates testing of a booking API (the public [restful-booker](https://restful-booker.herokuapp.com) service), covering authentication and the full create-read-update-delete lifecycle of a booking. It's built two ways:
 
 1. A **Postman collection** (runnable headlessly with Newman), and
 2. A **REST Assured** framework (Java + Maven + TestNG).
@@ -19,5 +19,4 @@ Building this project taught me:
 - How token authentication works — getting a token from `/auth` and using it to authorise the update and delete requests.
 
 ## License
-
 MIT
