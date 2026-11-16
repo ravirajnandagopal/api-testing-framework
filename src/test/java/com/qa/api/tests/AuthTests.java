@@ -1,6 +1,7 @@
 package com.qa.api.tests;
 
 import com.qa.api.base.BaseTest;
+import com.qa.api.config.ConfigManager;
 import com.qa.api.endpoints.Routes;
 import com.qa.api.payloads.AuthCredentials;
 import org.testng.annotations.Test;
@@ -18,7 +19,8 @@ public class AuthTests extends BaseTest {
 
     @Test(description = "Valid credentials return a non-null token")
     public void validCredentialsReturnToken() {
-        AuthCredentials creds = new AuthCredentials("admin", "password123");
+        AuthCredentials creds = new AuthCredentials(
+                ConfigManager.get("auth.username"), ConfigManager.get("auth.password"));
 
         String token = given()
                 .spec(requestSpec)
@@ -36,7 +38,7 @@ public class AuthTests extends BaseTest {
 
     @Test(description = "Invalid credentials return a 'Bad credentials' reason instead of a token")
     public void invalidCredentialsAreRejected() {
-        AuthCredentials creds = new AuthCredentials("admin", "wrong_password");
+        AuthCredentials creds = new AuthCredentials(ConfigManager.get("auth.username"), "wrong_password");
 
         given()
                 .spec(requestSpec)
