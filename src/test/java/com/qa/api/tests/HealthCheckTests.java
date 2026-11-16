@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
+
+
 /**
  * Negative scenarios: the API must reject writes without a valid token
  * and return 404 for bookings that do not exist.
@@ -73,5 +75,22 @@ public class BookingNegativeTests extends BaseTest {
                 .get(Routes.BOOKING_BY_ID)
         .then()
                 .statusCode(404);
+    }
+}
+
+/**
+ * Verifies the API is reachable before running functional suites.
+ * restful-booker's /ping returns 201 Created when healthy.
+ */
+public class HealthCheckTests extends BaseTest {
+
+    @Test(description = "API health check responds with 201")
+    public void apiIsHealthy() {
+        given()
+                .spec(requestSpec)
+        .when()
+                .get(Routes.PING)
+        .then()
+                .statusCode(201);
     }
 }
