@@ -8,6 +8,7 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
@@ -55,7 +56,7 @@ public class BookingCrudTests extends BaseTest {
     }
 
     @Test(priority = 2, dependsOnMethods = "createBooking",
-            description = "READ: GET /booking/{id} returns the created booking")
+            description = "READ: GET /booking/{id} returns the created booking and matches the JSON schema")
     public void readBooking() {
         given()
                 .spec(requestSpec)
@@ -66,7 +67,9 @@ public class BookingCrudTests extends BaseTest {
                 .statusCode(200)
                 .body("firstname", equalTo("Jim"))
                 .body("lastname", equalTo("Brown"))
-                .body("bookingdates.checkin", equalTo("2024-01-01"));
+                .body("bookingdates.checkin", equalTo("2024-01-01"))
+                // Contract check: every field is present and has the right type/format.
+                .body(matchesJsonSchemaInClasspath("schemas/booking-schema.json"));
     }
 
     @Test(priority = 3, description = "READ ALL: GET /booking returns a non-empty list of ids")
