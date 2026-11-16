@@ -10,6 +10,7 @@
     <test name="Booking CRUD">
         <classes>
             <class name="com.qa.api.tests.BookingCrudTests"/>
+            <class name="com.qa.api.tests.BookingNegativeTests"/>
         </classes>
     </test>
 </suite>
