@@ -78,5 +78,6 @@ restful-booker deliberately deviates from common REST conventions: `GET /ping` a
 - [playwright-automation-framework](https://github.com/ravirajnandagopal/playwright-automation-framework) – Playwright + TypeScript UI tests
 - [cicd-integration](https://github.com/ravirajnandagopal/cicd-integration) – merged cross-browser reports on GitHub Pages and a nightly regression
 
-## Licence
+## License
+
 MIT
